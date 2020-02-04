@@ -1,7 +1,7 @@
 import ReactDOM from 'react-dom';
 import React, { useContext, useEffect, useReducer, useState } from "react";
-import HooksDemo from './HooksDemo'
-import Button from './Button'
+import HooksDemo from './HooksDemo';
+import Button from './Button';
 
 // 在组件之间共享状态，在组件外部建立一个 Context
 const AppContext = React.createContext({});
@@ -68,6 +68,10 @@ function App()
 	return (
 		// AppContext.Provider提供了一个 Context 对象，这个对象可以被子组件共享。
 		<AppContext.Provider value={{ username : 'suerawesome' }}>
+			<br />
+			<br />
+			<Example/>
+
 			<div>
 				<Person personId={show} />
 
