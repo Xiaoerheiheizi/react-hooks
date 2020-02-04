@@ -68,10 +68,6 @@ function App()
 	return (
 		// AppContext.Provider提供了一个 Context 对象，这个对象可以被子组件共享。
 		<AppContext.Provider value={{ username : 'suerawesome' }}>
-			<br />
-			<br />
-			<Example/>
-
 			<div>
 				<Person personId={show} />
 
