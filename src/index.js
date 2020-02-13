@@ -74,7 +74,7 @@ function App()
 				console.log(files);
 			}}>
 				<div className="FilesDragAndDrop__area">
-					下载个文件试试？
+					传个文件试试？
 					<span
 						role="img"
 						aria-label="emoji"

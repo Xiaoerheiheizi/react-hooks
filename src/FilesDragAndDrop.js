@@ -6,6 +6,7 @@ const FilesDragAndDrop = (props) => {
 	const [message, setMessage] = useState({ show : false, text : null, type : null });
 	const drop = useRef();
 	const drag = useRef();
+
 	useEffect(() => {
 		drop.current.addEventListener('dragover', handleDragOver);
 		drop.current.addEventListener('drop', handleDrop);
