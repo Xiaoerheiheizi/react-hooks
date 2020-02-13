@@ -1,7 +1,9 @@
 import ReactDOM from 'react-dom';
-import React, { useContext, useEffect, useReducer, useState } from "react";
+import React, { Fragment, useContext, useEffect, useReducer, useState } from "react";
 import HooksDemo from './HooksDemo';
 import Button from './Button';
+import { FilesDragAndDrop } from "./FilesDragAndDrop";
+import './assets/style/style.less';
 
 // 在组件之间共享状态，在组件外部建立一个 Context
 const AppContext = React.createContext({});
@@ -66,47 +68,64 @@ function App()
 	const [show, setShow] = useState("1");
 
 	return (
-		// AppContext.Provider提供了一个 Context 对象，这个对象可以被子组件共享。
-		<AppContext.Provider value={{ username : 'suerawesome' }}>
-			<div>
-				<Person personId={show} />
+		<Fragment>
+			{/*  交互完整的文件上传组件  */}
+			<FilesDragAndDrop onUpload={(files) => {
+				console.log(files);
+			}}>
+				<div className="FilesDragAndDrop__area">
+					下载个文件试试？
+					<span
+						role="img"
+						aria-label="emoji"
+						className="area__icon">
+                        &#128526;
+					</span>
+				</div>
+			</FilesDragAndDrop>
+
+			{/*  AppContext.Provider提供了一个 Context 对象，这个对象可以被子组件共享。  */}
+			<AppContext.Provider value={{ username : 'suerawesome' }}>
+				<div>
+					<Person personId={show} />
+
+					<div>
+						Show:
+						<button onClick={() => setShow('1')}>
+							Luke
+						</button>
+						<button onClick={() => setShow('2')}>
+							C-3PO
+						</button>
+					</div>
+				</div>
+
+				<br />
+				<br />
 
 				<div>
-					Show:
-					<button onClick={()=> setShow('1')}>
-						Luke
+					<button onClick={() => {
+						dispatch({ type : 'countUp' })
+					}}>
+						+ 1
 					</button>
-					<button onClick={()=> setShow('2')}>
-						C-3PO
-					</button>
+					<p>
+						Count: {state.count}
+					</p>
 				</div>
-			</div>
 
-			<br />
-			<br />
-
-			<div>
-				<button onClick={() => {
-					dispatch({ type : 'countUp' })
-				}}>
-					+ 1
-				</button>
-				<p>
-					Count: {state.count}
-				</p>
-			</div>
-
-			<br />
-			<br />
-			<Messages />
-			<br />
-			<br />
-			<HooksDemo />
-			<br />
-			<br />
-			{/* 给子组件传参 */}
-			<Button username="hahaha" />
-		</AppContext.Provider>
+				<br />
+				<br />
+				<Messages />
+				<br />
+				<br />
+				<HooksDemo />
+				<br />
+				<br />
+				{/* 给子组件传参 */}
+				<Button username="hahaha" />
+			</AppContext.Provider>
+		</Fragment>
 	)
 }
 
