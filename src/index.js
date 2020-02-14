@@ -5,6 +5,7 @@ import Button from './Button';
 import { FilesDragAndDrop } from "./FilesDragAndDrop";
 import './assets/style/style.less';
 import CreateRefAndUseRef from "./CreateRefAndUseRef";
+import UseRef from "./UseRef";
 
 // 在组件之间共享状态，在组件外部建立一个 Context
 const AppContext = React.createContext({});
@@ -84,6 +85,10 @@ function App()
 					</span>
 				</div>
 			</FilesDragAndDrop>
+
+			<div>
+				<UseRef />
+			</div>
 
 			<div>
 				<CreateRefAndUseRef />
