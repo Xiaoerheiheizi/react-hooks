@@ -6,12 +6,13 @@ const FilesDragAndDrop = (props) => {
 	const [message, setMessage] = useState({ show : false, text : null, type : null });
 	const drop = useRef();
 	const drag = useRef();
+	console.log(props);
 
 	useEffect(() => {
-		drop.current.addEventListener('dragover', handleDragOver);
-		drop.current.addEventListener('drop', handleDrop);
-		drop.current.addEventListener('dragenter', handleDragEnter);
-		drop.current.addEventListener('dragleave', handleDragLeave);
+		drop.current.addEventListener('dragover', handleDragOver); // 会在拖拽源元素的鼠标指针在目标元素内移动时持续触发
+		drop.current.addEventListener('drop', handleDrop); // 拖动源元素的鼠标指针位于目标元素内，并松开鼠标时触发
+		drop.current.addEventListener('dragenter', handleDragEnter); // 会在拖拽鼠标指针进入目标元素时触发
+		drop.current.addEventListener('dragleave', handleDragLeave); // 会在拖拽源元素的鼠标指针离开目标元素时触发
 		return () => {
 			drop.current.removeEventListener('dragover', handleDragOver);
 			drop.current.removeEventListener('drop', handleDrop);
@@ -30,6 +31,8 @@ const FilesDragAndDrop = (props) => {
 		e.stopPropagation();
 		setDragging(false);
 		const { count, formats } = props;
+		console.log(count, formats);
+		console.log(props);
 		const files = [...e.dataTransfer.files];
 
 		if (count && count < files.length) {

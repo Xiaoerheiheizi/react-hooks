@@ -72,7 +72,8 @@ function App()
 	return (
 		<Fragment>
 			{/*  交互完整的文件上传组件  */}
-			<FilesDragAndDrop onUpload={(files) => {
+			<FilesDragAndDrop count={1}
+			                  onUpload={(files) => {
 				console.log(files);
 			}}>
 				<div className="FilesDragAndDrop__area">
