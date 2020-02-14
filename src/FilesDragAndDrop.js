@@ -1,6 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
 
+/**
+ * 实现一个交互完整的拖拽上传组件
+ * @param props
+ * @returns {*}
+ * @constructor
+ */
 const FilesDragAndDrop = (props) => {
 	const [dragging, setDragging] = useState(false);
 	const [message, setMessage] = useState({ show : false, text : null, type : null });
@@ -40,6 +46,8 @@ const FilesDragAndDrop = (props) => {
 			return
 		}
 
+		// some()是对数组中每一项运行给定函数，如果该函数对任一项返回true，则返回true。
+		// .endsWith是判断是否按指定字符串结尾
 		if (formats && files.some((file) => !formats.some((format) => file.name.toLowerCase().endsWith(format.toLowerCase())))) {
 			showMessage(`只允许上传${formats.join(', ')}格式的文件。`, 'error', 2000);
 			return

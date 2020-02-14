@@ -3,9 +3,12 @@ import React, { Fragment, useContext, useEffect, useReducer, useState } from "re
 import HooksDemo from './HooksDemo';
 import Button from './Button';
 import { FilesDragAndDrop } from "./FilesDragAndDrop";
-import './assets/style/style.less';
 import CreateRefAndUseRef from "./CreateRefAndUseRef";
 import UseRef from "./UseRef";
+import { DynamicBarChart } from "./dynamic_bar_chart/DynamicBarChart";
+import helpers from "./dynamic_bar_chart/helpers";
+import mocks from "./dynamic_bar_chart/mocks";
+import './assets/style/style.less';
 
 // 在组件之间共享状态，在组件外部建立一个 Context
 const AppContext = React.createContext({});
@@ -71,6 +74,10 @@ function App()
 
 	return (
 		<Fragment>
+			<DynamicBarChart data={helpers.generateData(100, mocks.defaultChart, {
+				prefix : 'Iteration'
+			})} />
+
 			{/*  交互完整的文件上传组件  */}
 			<FilesDragAndDrop count={1}
 			                  onUpload={(files) => {
