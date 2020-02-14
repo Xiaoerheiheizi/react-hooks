@@ -4,6 +4,7 @@ import HooksDemo from './HooksDemo';
 import Button from './Button';
 import { FilesDragAndDrop } from "./FilesDragAndDrop";
 import './assets/style/style.less';
+import CreateRefAndUseRef from "./CreateRefAndUseRef";
 
 // 在组件之间共享状态，在组件外部建立一个 Context
 const AppContext = React.createContext({});
@@ -83,6 +84,10 @@ function App()
 					</span>
 				</div>
 			</FilesDragAndDrop>
+
+			<div>
+				<CreateRefAndUseRef />
+			</div>
 
 			{/*  AppContext.Provider提供了一个 Context 对象，这个对象可以被子组件共享。  */}
 			<AppContext.Provider value={{ username : 'suerawesome' }}>
